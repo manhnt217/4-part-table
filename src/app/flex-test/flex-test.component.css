@@ -1,0 +1,141 @@
+.page {
+    height: 100%;
+    background-color: olive;
+
+    display: flex;
+    flex-direction: column;
+    flex-flow: column-reverse nowrap;
+}
+
+.page-header {
+    min-height: 0px;
+    background-color: olive;
+    flex: 1;
+
+    display: flex;
+    flex-direction: column;
+    overflow: auto;
+}
+
+.header, .footer {
+    min-height: 50px;
+    height: 100px;
+    background-color: lightgray;
+}
+
+.container {
+    background-color: dodgerblue;
+
+    flex: 1;
+    min-height: 0px;
+
+    display: flex;
+    flex-direction: column;
+}
+
+.top {
+    min-height: 120px;
+    /* height: 100%; */
+    overflow: auto;
+
+    display: flex;
+    flex-direction: row;
+
+    flex: 0;
+
+    background-color: violet;
+    /* border: 1px dashed cyan; */
+}
+
+.bottom {
+    min-height: 50px;
+    flex: 1;
+    overflow: auto;
+
+    display: flex;
+    flex-direction: row;
+
+    background-color: lightgreen;
+    /* border: 1px dashed grey; */
+}
+
+.left {
+    min-width: 100px;
+    overflow: auto;
+
+    height: 100%;
+
+
+    border: 1px dashed black;
+    box-sizing: border-box;
+
+    /* FIX */
+    overflow-y: hidden;
+}
+
+.right {
+    min-width: 300px;
+    flex: 1;
+    overflow: auto;
+
+    height: 100%;
+
+    border: 1px dashed black;
+    box-sizing: border-box;
+}
+
+.top .left {
+    background-color: brown;
+}
+
+.top .right {
+    background-color: coral;
+    width: auto;
+}
+
+.bottom .left {
+    background-color: coral;
+
+}
+
+.bottom .right {
+    background-color: brown;
+}
+
+.top > .left, .top > .right {
+    /* FIX */
+    overflow-x: hidden;
+}
+
+
+
+/* Content */
+
+.top .content {
+    height: 175px;
+
+    background-color: bisque;
+    border: 5px solid blue;
+    box-sizing: border-box;
+}
+
+.bottom .content {
+    height: 1000px;
+
+    background-color: salmon;
+    border: 5px solid red;
+    box-sizing: border-box;
+}
+
+.left .content {
+    width: 1233px;
+    border: 5px solid green;
+}
+
+.right .content {
+    width: 5000px;
+}
+/* 
+.content {
+    width: 25px;
+} */

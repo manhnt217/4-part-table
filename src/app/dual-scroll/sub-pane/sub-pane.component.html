@@ -1,0 +1,7 @@
+<div class="pane">
+  <div *ngFor="let i of array | async; let k = index; let odd = odd">
+    <div *ngIf="name.startsWith('bottom') || k < 5" class="line" (click)="click()">
+      {{name + i}}
+    </div>
+  </div>
+</div>
