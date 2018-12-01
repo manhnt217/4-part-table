@@ -1,6 +1,7 @@
 import { Component, OnInit, ViewChild, ElementRef, AfterContentChecked, AfterContentInit, AfterViewChecked, AfterViewInit, ChangeDetectorRef } from '@angular/core';
 import { Subject, Subscription, Observable } from 'rxjs';
 import { map, pairwise, merge } from 'rxjs/operators';
+import { ScrollService } from './scroll.service';
 
 @Component({
   selector: 'app-dual-scroll',
@@ -16,6 +17,8 @@ export class DualScrollComponent implements OnInit, AfterViewChecked, AfterViewI
   @ViewChild('topLeft') topLeftRef: ElementRef
   @ViewChild('bottomRight') bottomRightRef: ElementRef
   @ViewChild('topRight') topRightRef: ElementRef
+  @ViewChild('scrollBufferRight') scrollBufferRight: ElementRef
+  @ViewChild('scrollBufferBottom') scrollBufferBottom: ElementRef
 
   private bottomLeft: HTMLElement;
   private topLeft: HTMLElement;
@@ -28,9 +31,9 @@ export class DualScrollComponent implements OnInit, AfterViewChecked, AfterViewI
   prefixSubject: Subject<string>;
   suffixSubject: Subject<string>;
   currentPfx = '';
-  ARRAY_MAX: number = 20;
+  ARRAY_MAX: number = 100;
 
-  constructor(private cdRef: ChangeDetectorRef) {
+  constructor(private cdRef: ChangeDetectorRef, private scrollService: ScrollService) {
     this.prefix = new Observable();
     this.prefixSubject = new Subject();
     this.suffixSubject = new Subject();
@@ -58,34 +61,66 @@ export class DualScrollComponent implements OnInit, AfterViewChecked, AfterViewI
     this.rightArray = this.prefixSubject.pipe(
       map(_ => this.getArray(this.currentPfx, 'RIGHT')),
     )
-  }
 
-  click() {
-    this.prefixSubject.next('><==========><')
-  }
-
-  onScroll(event: Event, side: string) {
-    const target = event.target as HTMLElement
-    switch (side) {
+    this.scrollService.scrollSubject.asObservable().subscribe((e: { srcSide: string, scrollTop: number, scrollLeft: number }) => {
+      switch (e.srcSide) {
       // case 'top-left':
       //   this.topRight.scrollTop = target.scrollTop
       //   this.bottomLeft.scrollLeft = target.scrollLeft
       //   break;
-      case 'bottom-left':
-        this.topLeft.scrollLeft = target.scrollLeft
-        // this.bottomRight.scrollTop = target.scrollTop
-        break;
-      case 'top-right':
-        this.topLeft.scrollTop = target.scrollTop
-        // this.bottomRight.scrollLeft = target.scrollLeft
-        break;
+      // case 'bottom-left':
+      //   this.topLeft.scrollLeft = target.scrollLeft
+      //   // this.bottomRight.scrollTop = target.scrollTop
+      //   break;
+      // case 'top-right':
+      //   this.topLeft.scrollTop = target.scrollTop
+      //   // this.bottomRight.scrollLeft = target.scrollLeft
+      //   break;
       case 'bottom-right':
-        this.topRight.scrollLeft = target.scrollLeft
-        this.bottomLeft.scrollTop = target.scrollTop
+        this.topRight.scrollLeft = e.scrollLeft
+        this.bottomLeft.scrollTop = e.scrollTop
         break;
       default:
         break;
     }
+    })
+  }
+
+  click() {
+    this.prefixSubject.next('> <==========> <')
+  }
+
+  onScroll(event: Event, side: string) {
+    const target = event.target as HTMLElement
+    console.log('scroll', target.scrollTop);
+    event.preventDefault();
+    event.stopImmediatePropagation();
+    event.stopPropagation();
+    this.scrollService.scrollSubject.next({srcSide: side, scrollTop: target.scrollTop, scrollLeft: target.scrollLeft});
+
+    // switch (side) {
+    //   // case 'top-left':
+    //   //   this.topRight.scrollTop = target.scrollTop
+    //   //   this.bottomLeft.scrollLeft = target.scrollLeft
+    //   //   break;
+    //   case 'bottom-left':
+    //     this.topLeft.scrollLeft = target.scrollLeft
+    //     // this.bottomRight.scrollTop = target.scrollTop
+    //     break;
+    //   case 'top-right':
+    //     this.topLeft.scrollTop = target.scrollTop
+    //     // this.bottomRight.scrollLeft = target.scrollLeft
+    //     break;
+    //   case 'bottom-right':
+    //     this.topRight.scrollLeft = target.scrollLeft
+    //     this.bottomLeft.scrollTop = target.scrollTop
+
+    //     console.log('height', this.bottomRight.offsetHeight - this.bottomRight.clientHeight)
+    //     console.log('width', this.bottomRight.offsetWidth - this.bottomRight.clientWidth)
+    //     break;
+    //   default:
+    //     break;
+    // }
   }
 
   getArray(prefix: string, name: string): Array<any> {

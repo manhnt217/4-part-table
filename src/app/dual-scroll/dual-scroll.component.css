@@ -1,3 +1,26 @@
+*::-webkit-scrollbar {
+    -webkit-appearance: none;
+}
+
+*::-webkit-scrollbar:vertical {
+    width: 11px;
+}
+
+*::-webkit-scrollbar:horizontal {
+    height: 11px;
+}
+
+*::-webkit-scrollbar-thumb {
+    border-radius: 8px;
+    border: 2px solid white; /* should match background, can't be transparent */
+    background-color: rgba(0, 0, 0, .5);
+}
+
+*::-webkit-scrollbar-track {
+    background-color: #fff;
+    border-radius: 8px;
+}
+
 :host {
     height: 100%;
     margin: 0;
@@ -16,35 +39,40 @@
     box-sizing: border-box; */
     height: 100%;
     min-height: 100px;
-    flex: 1 1 unset;
+    flex: 1;
     background-color:lightskyblue;
+
     display: flex;
     flex-direction: column;
-    justify-content: space-evenly;
-    overflow: auto;
+}
+
+.top, .bottom {
+    display: flex;
+    flex-flow: row nowrap;
 }
 
 .top {
     width: 100%;
-    height: 100px;
     background-color: cornflowerblue;
 }
 
 .bottom {
     width: 100%;
+    min-height: 20px;
     background-color: darkred;
     flex: 1;
-    height: calc(100% - 20px);
+    border: 1px dash salmon;
 }
 
 .left, .right {
     /* min-width: 45%; */
     height: 100%;
-    overflow: auto;
+    overflow: auto
 }
 
 .left {
     float: left;
+    min-width: 400px;
 }
 
 .right {
@@ -53,19 +81,51 @@
 
 .top .left {
     background-color: gold;
-    overflow: hidden;
+    /* overflow: hidden; */
 }
 
 .top .right {
     background-color: purple;
-    overflow-x: hidden;
+    /* overflow-x: hidden; */
 }
 
 .bottom .left {
     background-color: wheat;
-    overflow-y: hidden;
+    /* overflow-y: hidden; */
 }
 
 .bottom .right {
     background-color: forestgreen;
 }
+
+app-sub-pane {
+    display: block;
+    border: 1px solid magenta;
+    box-sizing: border-box;
+}
+
+.left app-sub-pane {
+    width: 300px;
+}
+
+.right app-sub-pane {
+    width: 1000px;
+}
+
+.top > .right {
+    white-space: nowrap;
+}
+
+.top > .right > app-sub-pane {
+    display: inline-block;
+}
+/*
+#scrollBufferRight {
+    width: 11px;
+    display: inline-block;
+}
+
+#scrollBufferBottom {
+    height: 11px;
+    background-color: red;
+} */

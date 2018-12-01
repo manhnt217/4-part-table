@@ -8,27 +8,19 @@
     </div>
     <div class="container">
       <div class="top">
-        <div class="left">
-          <!-- <div class="content-container"> -->
+        <div #topLeft class="left">
             <div class="content"></div>
-          <!-- </div> -->
         </div>
-        <div class="right">
-          <!-- <div class="content-container"> -->
+        <div #topRight class="right" (scroll)="onScroll($event, 'top-right')">
             <div class="content"></div>
-          <!-- </div> -->
         </div>
       </div>
       <div class="bottom">
-        <div class="left">
-          <!-- <div class="content-container"> -->
+        <div #bottomLeft class="left" (scroll)="onScroll($event, 'bottom-left')">
             <div class="content"></div>
-          <!-- </div> -->
-        </div>
-        <div class="right">
-          <!-- <div class="content-container"> -->
+        </div>10
+        <div #bottomRight class="right" (scroll)="onScroll($event, 'bottom-right')">
             <div class="content"></div>
-          <!-- </div> -->
         </div>
       </div>
     </div>

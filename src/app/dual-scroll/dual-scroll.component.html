@@ -6,17 +6,17 @@
     </div>
     <div #topRight class="right" (scroll)="onScroll($event, 'top-right')">
       <app-sub-pane [name]="'topRight'" [array]="rightArray"></app-sub-pane>
+      <div id="scrollBufferRight" #scrollBufferRight></div>
     </div>
-    <div style="clear: both;"></div>
   </div>
   <div class="bottom">
     <div #bottomLeft class="left" (scroll)="onScroll($event, 'bottom-left')">
       <app-sub-pane [name]="'bottomLeft'" [array]="leftArray"></app-sub-pane>
+      <div id = "scrollBufferBottom" #scrollBufferBottom></div>
     </div>
     <div #bottomRight class="right" (scroll)="onScroll($event, 'bottom-right')">
       <app-sub-pane [name]="'bottomRight'" [array]="rightArray"></app-sub-pane>
     </div>
-    <div style="clear: both;"></div>
   </div>
 
 </div>

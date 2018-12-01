@@ -1,8 +1,8 @@
-<div (click)="click()" (mouseup)="mouseUp()" style="width: 500px; height: 500px; background-color: aquamarine">
-  <div style="width: 100px; height: 100px; background-color: palevioletred" (mousedown)="mouseDown()">
+<div style="width: 500px; height: 500px; background-color: aquamarine" (click)="click($event)" (mouseup)="mouseUp($event)">
+  <div style="width: 100px; height: 100px; background-color: palevioletred">
     Blahblah
   </div>
-  <div style="width: 100px; height: 100px; background-color: blueviolet" (click)="childClick()">
+  <div style="width: 100px; height: 100px; background-color: blueviolet">
     Blahblah
   </div>
 </div>

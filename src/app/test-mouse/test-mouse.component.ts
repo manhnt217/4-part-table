@@ -13,21 +13,21 @@ export class TestMouseComponent implements OnInit {
   }
 
   click(e: Event) {
-    event.stopPropagation();
-    event.stopImmediatePropagation();
-    event.preventDefault();
+    // event.stopPropagation();
+    // event.stopImmediatePropagation();
+    // event.preventDefault();
     console.log('click')
   }
   mouseUp(e: Event) {
-    event.stopPropagation();
-    event.stopImmediatePropagation();
-    event.preventDefault();
+    // event.stopPropagation();
+    // event.stopImmediatePropagation();
+    // event.preventDefault();
     console.log('mouseUp')
   }
   mouseDown(e: Event) {
-    event.stopPropagation();
-    event.stopImmediatePropagation();
-    event.preventDefault();
+    // event.stopPropagation();
+    // event.stopImmediatePropagation();
+    // event.preventDefault();
     console.log('mouseDown')
   }
 

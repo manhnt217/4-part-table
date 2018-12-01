@@ -7,6 +7,9 @@ import { DualScrollComponent } from './dual-scroll/dual-scroll.component';
 import { SubPaneComponent } from './dual-scroll/sub-pane/sub-pane.component';
 import { MouseWheelDirective } from './mouse-wheel-directive';
 import { FlexTestComponent } from './flex-test/flex-test.component';
+import { ScrollObservableComponent } from './scroll-observable/scroll-observable.component';
+import { ScrollService } from './dual-scroll/scroll.service';
+import { SpreadsheetTestComponent } from './spreadsheet-test/spreadsheet-test.component';
 
 @NgModule({
   declarations: [
@@ -15,12 +18,14 @@ import { FlexTestComponent } from './flex-test/flex-test.component';
     DualScrollComponent,
     SubPaneComponent,
     MouseWheelDirective,
-    FlexTestComponent
+    FlexTestComponent,
+    ScrollObservableComponent,
+    SpreadsheetTestComponent
   ],
   imports: [
     BrowserModule
   ],
-  providers: [],
+  providers: [ScrollService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
