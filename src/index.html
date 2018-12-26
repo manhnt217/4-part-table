@@ -1,5 +1,6 @@
 <!doctype html>
 <html lang="en" style="height: 95%">
+
 <head>
   <meta charset="utf-8">
   <title>Angular4</title>
@@ -7,8 +8,27 @@
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script> -->
+  <script src="https://apis.google.com/js/api.js?onload=onLoadCallback"></script>
+  <!-- <script>
+    var gapiPromise = (function () {
+      var deferred = $.Deferred();
+      window.onLoadCallback = function () {
+        deferred.resolve(gapi);
+      };
+      return deferred.promise()
+    }());
+
+    var authInited = gapiPromise.then(function () {
+      gapi.auth2.init({
+        client_id: '910031515658-l7u85tdqrqg6l8l0flflo129jvga4ip2.apps.googleusercontent.com'
+      });
+    })
+  </script> -->
 </head>
+
 <body style="height: 100%; background-color: #333">
   <app-root></app-root>
 </body>
+
 </html>

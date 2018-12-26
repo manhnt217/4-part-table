@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 
 @Component({
   selector: 'app-test-mouse',
@@ -7,31 +7,44 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TestMouseComponent implements OnInit {
 
-  constructor() { }
+  @ViewChild('bar') bar: ElementRef
+
+  constructor(private self: ElementRef) { }
 
   ngOnInit() {
   }
 
-  click(e: Event) {
+  click(e: MouseEvent) {
     // event.stopPropagation();
     // event.stopImmediatePropagation();
     // event.preventDefault();
     console.log('click')
   }
-  mouseUp(e: Event) {
+
+  mouseUp(e: MouseEvent) {
     // event.stopPropagation();
     // event.stopImmediatePropagation();
     // event.preventDefault();
     console.log('mouseUp')
   }
-  mouseDown(e: Event) {
+
+  mouseDown(e: MouseEvent) {
     // event.stopPropagation();
     // event.stopImmediatePropagation();
     // event.preventDefault();
-    console.log('mouseDown')
+    console.log('mouseDown');
+    (this.bar.nativeElement as HTMLElement).style.left = e.clientX - (this.self.nativeElement as HTMLElement).offsetLeft + 'px';
+    // e.target.addEventListener('mousemove', );
   }
 
-  childClick(e: Event) {
+  mouseMove(e: MouseEvent) {
+    // event.stopPropagation();
+    // event.stopImmediatePropagation();
+    // event.preventDefault();
+    (this.bar.nativeElement as HTMLElement).style.left = e.clientX - (this.self.nativeElement as HTMLElement).offsetLeft + 'px';
+  }
+
+  childClick(e: MouseEvent) {
     console.log('childClick')
   }
 }

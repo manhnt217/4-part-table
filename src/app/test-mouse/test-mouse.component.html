@@ -1,8 +1,7 @@
-<div style="width: 500px; height: 500px; background-color: aquamarine" (click)="click($event)" (mouseup)="mouseUp($event)">
-  <div style="width: 100px; height: 100px; background-color: palevioletred">
-    Blahblah
+<div style="width: 500px; height: 500px; background-color: aquamarine" (click)="click($event)">
+  <div #bar class="bar" style="width: 1px; height: 100px; background-color: palevioletred" (mouseup)="mouseUp($event)" >
   </div>
-  <div style="width: 100px; height: 100px; background-color: blueviolet">
+  <div style="width: 300px; height: 300px; background-color: blueviolet" (mousedown)="mouseDown($event)">
     Blahblah
   </div>
 </div>

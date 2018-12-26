@@ -10,6 +10,8 @@ import { FlexTestComponent } from './flex-test/flex-test.component';
 import { ScrollObservableComponent } from './scroll-observable/scroll-observable.component';
 import { ScrollService } from './dual-scroll/scroll.service';
 import { SpreadsheetTestComponent } from './spreadsheet-test/spreadsheet-test.component';
+import { TestRxjsComponent } from './test-rxjs/test-rxjs.component';
+import { DynamicComponent } from './dynamic/dynamic.component';
 
 @NgModule({
   declarations: [
@@ -20,12 +22,15 @@ import { SpreadsheetTestComponent } from './spreadsheet-test/spreadsheet-test.co
     MouseWheelDirective,
     FlexTestComponent,
     ScrollObservableComponent,
-    SpreadsheetTestComponent
+    SpreadsheetTestComponent,
+    TestRxjsComponent,
+    DynamicComponent
   ],
   imports: [
     BrowserModule
   ],
   providers: [ScrollService],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents: [TestRxjsComponent]
 })
 export class AppModule { }
